@@ -32,8 +32,6 @@ To run the project, ensure you have the following prerequisites installed:
 Contributions to the project are welcome! If you encounter any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
 
 
-## Acknowledgements
+## Unfolding Maps link
 
 - [Unfolding Maps](http://unfoldingmaps.org/): A Java library for interactive maps and geovisualizations.
-- University of California San Diego: Object-Oriented Programming course instructors and staff.
-- Coursera: Providing the platform for online learning and collaboration.
