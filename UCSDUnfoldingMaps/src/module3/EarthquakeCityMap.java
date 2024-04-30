@@ -24,8 +24,8 @@ import parsing.ParseFeed;
 /** EarthquakeCityMap
  * An application with an interactive map displaying earthquake data.
  * Author: UC San Diego Intermediate Software Development MOOC team
- * @author Your name here
- * Date: July 17, 2015
+ * @author Daniel Costa
+ * Date: April 24, 2024
  * */
 public class EarthquakeCityMap extends PApplet {
 
@@ -33,7 +33,7 @@ public class EarthquakeCityMap extends PApplet {
 	private static final long serialVersionUID = 1L;
 
 	// IF YOU ARE WORKING OFFLINE, change the value of this variable to true
-	private static final boolean offline = false;
+	private static final boolean offline = true;
 	
 	// Less than this threshold is a light earthquake
 	public static final float THRESHOLD_MODERATE = 5;
@@ -60,7 +60,7 @@ public class EarthquakeCityMap extends PApplet {
 		else {
 			map = new UnfoldingMap(this, 200, 50, 700, 500, new Google.GoogleMapProvider());
 			// IF YOU WANT TO TEST WITH A LOCAL FILE, uncomment the next line
-			//earthquakesURL = "2.5_week.atom";
+			earthquakesURL = "2.5_week.atom";
 		}
 		
 	    map.zoomToLevel(2);
@@ -77,6 +77,12 @@ public class EarthquakeCityMap extends PApplet {
 	    // to create a new SimplePointMarker for each PointFeature in 
 	    // earthquakes.  Then add each new SimplePointMarker to the 
 	    // List markers (so that it will be added to the map in the line below)
+		for (PointFeature feature : earthquakes) {
+			//Call the function createMarker to create a new feature
+			SimplePointMarker marker = createMarker(feature);
+			
+			markers.add(marker);
+		}
 	    
 	    
 	    // Add the markers to the map so that they are displayed
@@ -91,7 +97,11 @@ public class EarthquakeCityMap extends PApplet {
 	 * 
 	 * TODO (Step 4): Add code to this method so that it adds the proper 
 	 * styling to each marker based on the magnitude of the earthquake.  
+	 * 
 	*/
+
+
+
 	private SimplePointMarker createMarker(PointFeature feature)
 	{  
 		// To print all of the features in a PointFeature (so you can see what they are)
