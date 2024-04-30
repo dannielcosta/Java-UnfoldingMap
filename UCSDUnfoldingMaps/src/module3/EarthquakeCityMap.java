@@ -107,7 +107,7 @@ public class EarthquakeCityMap extends PApplet {
 		// To print all of the features in a PointFeature (so you can see what they are)
 		// uncomment the line below.  Note this will only print if you call createMarker 
 		// from setup
-		//System.out.println(feature.getProperties());
+		System.out.println(feature.getProperties());
 		
 		// Create a new SimplePointMarker at the location given by the PointFeature
 		SimplePointMarker marker = new SimplePointMarker(feature.getLocation());
@@ -117,7 +117,22 @@ public class EarthquakeCityMap extends PApplet {
 		
 		// Here is an example of how to use Processing's color method to generate 
 	    // an int that represents the color yellow.  
-	    int yellow = color(255, 255, 0);
+		int color;
+		if(mag < THRESHOLD_LIGHT) {
+			color = color(0, 255, 0);
+		}
+		else if(mag < THRESHOLD_MODERATE) {
+			color = color(255, 255, 0);
+		}
+		else {
+			color = color(255, 0, 0);
+		}
+	    //int yellow = color(255, 255, 0);   < - COMMENTED BY ME - COLOR ALREADY DEFINED FROM THE REPO
+
+		fload radius = mag * 2;
+
+		marker.setColor(color);
+		marker.setRadius(radius);
 		
 		// TODO (Step 4): Add code below to style the marker's size and color 
 	    // according to the magnitude of the earthquake.  
